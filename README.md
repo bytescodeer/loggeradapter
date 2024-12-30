@@ -1,6 +1,6 @@
 # loggeradapter
 
-[英文文档](README.md) | [中文文档](README_zh-CN.md)
+[English Doc](README.md) | [中文文档](README_zh-CN.md)
 
 The Go log adapter implements log rotation, backup, compression archiving,
 and the functionality to delete backup and archived files according to specified policies.

@@ -1,6 +1,6 @@
 # loggeradapter
 
-[英文文档](README.md) | [中文文档](README_zh-CN.md)
+[English Doc](README.md) | [中文文档](README_zh-CN.md)
 
 Golang 日志适配器，实现了日志轮转、备份和压缩归档、及按指定策略删除备份和归档文件的功能，可与常见日志组件如：zap logger、logrus 等结合。
 
