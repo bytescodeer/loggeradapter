@@ -46,7 +46,9 @@ Golang 日志适配器，实现了日志轮转、备份和压缩归档、及按�
     文件轮转备份策略，支持以下格式的配置：
 
     (1). `b|byte|kb|kilobyte|mb|megabyte|gb|gigabyte|tb|terabyte`
+    
     (2). `y|year|M|month|mo|mon|w|week|d|day|h|hour|m|minute|min|s|second`
+    
     (3). `annually|monthly|weekly|daily|hourly|minutely|secondly`
 
     _解释_： 以上三种配置方式中，`(1)` 和 `(2)` 配置必须前面有数字，如：10mb、2year，且配置值不区分大小写。其中：
@@ -66,6 +68,7 @@ Golang 日志适配器，实现了日志轮转、备份和压缩归档、及按�
     备份文件保留策略，支持以下格式的配置：
 
     (1). `y|year|M|month|mo|mon|w|week|d|day|h|hour|m|minute|min|s|second`
+    
     (2). `number`
 
     _解释_： 以上两种配置方式中，`(1)` 配置和 `Rotation` 的 `y|year|M|month|mo|mon|w|week|d|day|h|hour|m|minute|min|s|second` 配置方式相同。
@@ -78,6 +81,7 @@ Golang 日志适配器，实现了日志轮转、备份和压缩归档、及按�
     压缩归档策略，支持以下格式的配置：
 
     (1). `y|year|M|month|mo|mon|w|week|d|day|h|hour|m|minute|min|s|second`
+    
     (2). `number`
 
     _解释_： 以上两种配置方式和 `Backup` 相同。为 `y|year|M|month|mo|mon|w|week|d|day|h|hour|m|minute|min|s|second` 时按照周期保留压缩归档文件，达到该时长的压缩归档文件将被删除。
