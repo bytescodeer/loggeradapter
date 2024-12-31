@@ -180,13 +180,7 @@ func (r *rotator) getNewFilename() string {
 }
 
 func (r *rotator) openNewFile() error {
-	err := os.MkdirAll(filepath.Dir(r.filename), 0755)
-	if err != nil {
-		return fmt.Errorf("can't make directories for new logfile: %s", err)
-	}
-
-	var info os.FileInfo
-	info, err = os.Stat(r.filename)
+	info, err := os.Stat(r.filename)
 	if err == nil {
 		// Copy the mode off the old logfile.
 		// move the existing file
@@ -217,6 +211,7 @@ func (r *rotator) close() error {
 
 	err := r.file.Close()
 	r.file = nil
+	r.fileSizeByte = 0
 	return err
 }
 
