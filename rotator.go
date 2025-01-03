@@ -40,6 +40,10 @@ type rotator struct {
 }
 
 func newRotator(cfg Config) *rotator {
+	if cfg.Rotation == "" {
+		return nil
+	}
+
 	v, unit, err := ParseExpression(cfg.Rotation)
 	if err != nil {
 		panic(fmt.Sprintf("Parse rotation expression failed. error: %v", err))

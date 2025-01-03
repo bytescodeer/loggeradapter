@@ -72,7 +72,7 @@ func (w *loggerWriter) Write(p []byte) (n int, err error) {
 		w.archiver.archive()
 	}
 
-	return 0, nil
+	return n, err
 }
 
 func (w *loggerWriter) openFile() error {
