@@ -21,11 +21,12 @@ type Config struct {
 }
 
 type loggerWriter struct {
-	filename    string
-	rotator     *rotator
-	archiver    *archiver
-	maxSizeByte int64
-	file        *os.File
+	filename     string
+	rotator      *rotator
+	archiver     *archiver
+	maxSizeByte  int64
+	fileSizeByte int64
+	file         *os.File
 }
 
 func New(cfg Config) LoggerWriter {
@@ -40,6 +41,7 @@ func New(cfg Config) LoggerWriter {
 
 	if lw.rotator != nil {
 		lw.rotator.file = lw.file
+		lw.rotator.fileSizeByte = lw.fileSizeByte
 		cfg.timeFormat = lw.rotator.timeFormat
 		lw.maxSizeByte = lw.rotator.maxSizeByte
 	}
@@ -64,8 +66,10 @@ func (w *loggerWriter) Write(p []byte) (n int, err error) {
 	if w.rotator != nil {
 		n, err = w.rotator.rotateWrite(p)
 		w.file = w.rotator.file
+		w.fileSizeByte = w.rotator.fileSizeByte
 	} else if w.file != nil {
 		n, err = w.file.Write(p)
+		w.fileSizeByte += int64(n)
 	}
 
 	if w.archiver != nil {
@@ -85,7 +89,13 @@ func (w *loggerWriter) openFile() error {
 		return fmt.Errorf("can't open logfile: %s", err)
 	}
 
+	fi, err := file.Stat()
+	if err != nil {
+		return fmt.Errorf("can't stat logfile: %s", err)
+	}
+
 	w.file = file
+	w.fileSizeByte = fi.Size()
 	return nil
 }
 
