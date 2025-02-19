@@ -9,7 +9,7 @@ Golang 日志适配器，实现了日志轮转、备份和压缩归档、及按�
 -   导入包
 
 ```go
-  go get -u github.com/fsjobwd/loggeradapter
+  go get -u github.com/bytescodeer/loggeradapter
 ```
 
 -   与 zap logger 结合
