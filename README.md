@@ -11,7 +11,7 @@ It can be integrated with common logging components such as zap logger, logrus, 
 -   Import package
 
 ```go
-  go get -u github.com/fsjobwd/loggeradapter
+  go get -u github.com/bytescodeer/loggeradapter
 ```
 
 -   Integrate with zap logger
