@@ -1,3 +1,3 @@
-module github.com/fsjobwd/loggeradapter
+module github.com/bytescodeer/loggeradapter
 
 go 1.18
