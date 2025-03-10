@@ -5,6 +5,7 @@
 The Go log adapter implements log rotation, backup, compression archiving,
 and the functionality to delete backup and archived files according to specified policies.
 It can be integrated with common logging components such as zap logger, logrus, etc.
+
 Note: Due to the change of the package path, the version number must be greater than or equal to v0.0.6!
 
 ## Usage
